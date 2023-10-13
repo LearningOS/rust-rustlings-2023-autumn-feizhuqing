@@ -9,14 +9,27 @@
 // Execute `rustlings hint errors1` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+/*
+ok and err，这两个方法可以将Result类型转化为Option类型
 
-pub fn generate_nametag_text(name: String) -> Option<String> {
+pub fn ok(self) -> Option<T>
+pub fn err(self) -> Option<E>
+
+ok_or和ok_or_else，这两个是一组，作用都是从Option转成Result。
+
+pub fn ok_or<E>(self, err: E) -> Result<T, E>
+pub fn ok_or_else<E, F>(self, err: F) -> Result<T, E>
+where
+    F: FnOnce() -> E, 
+
+*/
+
+
+pub fn generate_nametag_text(name: String) -> Result<String,String> {
     if name.is_empty() {
-        // Empty names aren't allowed.
-        None
+        Err(String::from("`name` was empty; it must be nonempty."))
     } else {
-        Some(format!("Hi! My name is {}", name))
+        Ok(format!("Hi! My name is {}", name))
     }
 }
 
