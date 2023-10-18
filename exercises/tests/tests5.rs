@@ -22,20 +22,19 @@
 // Execute `rustlings hint tests5` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 /// # Safety
 ///
 /// The `address` must contain a mutable reference to a valid `u32` value.
 /// 
+use std::ptr;
 unsafe fn modify_by_address(address:  usize) {
     // TODO: Fill your safety notice of the code block below to match your
     // code's behavior and the contract of this function. You may use the
     // comment of the test below as your format reference.
-    //let raw_pointer = address.as_mut_ptr();
     unsafe {
-         //*raw_pointer = 0xAABBCCDD;
-         *address = 0xAABBCCDD;
+        let t = &mut *(address as *mut u32);
+        *t = 0xAABBCCDD;
     }
 }
 
